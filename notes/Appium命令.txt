@@ -1,0 +1,9 @@
+用到的命令：
+
+查看appPackage和appActivity：（APK文件下载在电脑上）
+使用命令：e:\androidsdk\build-tools\28.0.2\aapt.exe dump badging d:\apk\toutiao.apk
+
+查看package：结果中的package
+
+查看第一个进入的界面：结果中的
+launchable-activity

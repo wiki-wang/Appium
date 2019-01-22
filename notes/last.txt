@@ -1,0 +1,51 @@
+WebView的测试
+
+安卓应用中的内嵌的展示网页内容的模块，称之为webview
+
+判断是否是webview：
+	长按，可以选中
+	
+WebView:
+	封装浏览器内容的窗口
+	里面的内容，就是Html
+	
+		
+		
+	开发必须加上以下代码：	myWebView.setWebContentsDebuggingEnabled(trrue);
+	
+	才能测试webview中的内容
+	
+	加一下 webview的 debug 调用.
+	
+	根据user-agent 判断是手机端还是服务器端
+	
+	Appium自动化WebView
+		appium中把所有的 界面环境 称之为 context
+		native部分的context名字一般为NATIVE_APP
+		
+		webviewbufen de context则为WEBVIEW_****
+		
+		如何查看当前的context
+		driver.contexts
+		
+		显示当前的context
+		driver.current_context
+		基本上大部分应用里面，只有一个WebView控件。
+		除了复杂的应用，可能有多个控件
+		
+		print(driver.contexts)
+		print(driver.current_context)
+		driver.switch_to.context('')
+		
+		如果安卓版本过低，需要指定驱动：
+		advanced
+		android
+		chromedriver binary path：
+		连执行程序一起写下来
+		
+		打开通知栏
+		driver.open_notifications()
+		
+		关闭通知栏
+			--可以往上滑动
+			--也可以按返回键

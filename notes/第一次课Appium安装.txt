@@ -1,0 +1,139 @@
+Appium
+
+移动自动化开发框架
+	--开源、跨平台、多语言支持的 移动应用 自动化工具
+
+测试对象：
+	--原生app
+		这个应用的代码是专门针对苹果或者安卓的移动设备开发的。开发的应用的界面，是对应平台的系统原生绘制出来的。
+		
+	--混合：
+		有一部分是原生，有一部分内嵌了web，内嵌web就是会跳转到web页面
+		
+	--移动web app
+		完全用手机浏览器打开的一个网址
+		
+		
+	--应用里面内嵌的浏览器，也叫做web view
+
+	测试对象App运行平台：
+		--iOS
+		--Android
+		
+	测试对象App运行环境：
+	真实设备
+	模拟器：真实用的比较少，一般都是真机
+		
+测试程序语言：
+	python、java、ruby
+	
+测试程序运行平台：
+	--ios的应用，appium server必须要运行在苹果的机器上
+	--android的代码，拿到苹果上，不能直接用，需要修改
+
+自动化原理：
+	test script --- Appium --- 安卓、苹果设备
+	test script   实现自动化的意图，发送http请求给Appium Server，类似于Selenium的浏览器驱动，把自动化命令传递给手机设备。手机设备接受到自动化命令后，根据命令做相应的自动化动作
+	
+	不需要直接构建HTTP请求，需要安装客户端库，这个库是对selenium的扩展
+	
+	Appium把自动化命令发送给手机设备。接受命令的究竟是什么呢？
+	Appium第一次在执行的时候，会检测手机有没有安装用来接收自动化命令的模块。一个程序。用来接收自动化命令，并且执行它。
+	
+	类似于Appium给手机发送木马程序，调用手机上的api库
+	苹果：UIAutomation / XCTest
+	安卓：UIAutomator
+	Appium通过调用这些库，操作手机。这些库不用自己安装，手机里面自带有。
+
+	手机上的API库：	
+		Android底层自动化工具：
+		2.3-4.1：Selendroid
+		4.2+：UIAutomator
+
+		IOS 9.3以前，苹果使用的是UIAutomation
+		iOS 9.3+ XCUItest
+
+	安装：
+		--安装Appium-Python-Client
+			pip install Appium-Python-Client
+
+		--安装Appium Server（解释器）
+			方法一：node.js & npm
+				npm install -g appium
+				必须要先安装node.js
+				--库比较大，并且服务器在国外，失败率比较高
+			
+			方法二：Appium Desktop（推荐）
+				包含了js的解释器node.js，还有Appium的程序代码，都打包好了，统一打包在了windows的安装包里面。包含了Appium Server的代码。（已下载）
+	
+			--安装 Android SDK
+				Adnroid Studio
+				--安卓应用的开发环境
+				Android Studio包含了Android SDK，但是国内很多运营商做了屏蔽，无法下载成功
+		
+		tools/bin/sdkmanager
+		
+		
+		sdkmanager "platform-tools" "platforms;android-28" "build-tools;28.0.2"
+		
+		运行上面的命令后，会自动下载相关组件。
+	
+	设置环境变量
+		ANDROID_HOME
+			--设置为sdk根目录的路径
+			--sdk\platform-tools\加入到环境变量path中。
+			
+			加入环境变量，是为了寻找adb
+			
+	--安装jdk
+		--建议安装1.8
+		--设置JAVA_HOME
+		
+	不低于4.2
+	以华为手机为例
+		--用usb线连接到手机
+		--进入手机-设置--关于手机--版本号--不停地点击版本号--开发人员选项--usb调试打开，监控ADB安装应用，关闭--尽量地信任usb调试
+		--退出到上级菜单，启动usb调试
+		
+		--adb devices -l(ist)
+		这个adb在sdk\platform-tools\ 请大家确保路径在path环境变量中
+		如果不能识别，请安装对应收集的usb驱动
+		
+	快速开始
+		准备工作
+			--被测试的app应用
+			--运行appium server
+			
+	代码：
+		from appium import webdriver
+					
+		from appim import webdriver
+		desired_caps = {}
+		['platformName'] = 'Android'
+		['platformVersion'] = '7'
+		['deviceName'] = 'test'  #苹果要严格写
+	
+	已存在的课程：
+	{
+            "id": 995,
+            "name": "java",
+            "desc": "java课程",
+            "display_idx": 1
+        },
+        {
+            "id": 1010,
+            "name": "C++",
+            "desc": "C++课程",
+            "display_idx": 1
+        },
+		
+		
+		{
+    "username":"",
+    "password":"sdfsdfsdf",
+    "realname":"李冰冰",
+    "desc":"李冰冰老师",
+    "courses":[{"id":995,"name":"java"}],
+    "display_idx":1
+}
+	

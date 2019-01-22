@@ -1,0 +1,11 @@
+UIAutomator API定位
+
+滑动：
+driver.swipe(x,y,x,y,duration)
+
+location 左上坐标
+ele.size []
+ele.location = []
+driver.get_window_size() = {'width','height'}
+
+https://github.com/jcyrss/songqin-testdev/blob/master/appium/task/task4.md
